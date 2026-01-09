@@ -254,7 +254,7 @@ import Marketplace from "./components/MarketPlace";
 import RegistrationModal from "./components/RegistrationModal";
 import ContractSignModal from "./components/ContractSignModal";
 import PaymentModal from "./components/PaymentModal";
-import LoginModal from "./components/loginModal";
+import LoginModal from "./components/LoginModal";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
