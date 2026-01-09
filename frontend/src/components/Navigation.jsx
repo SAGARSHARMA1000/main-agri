@@ -566,11 +566,11 @@ const Navigation = ({
           : "bg-transparent py-6 md:py-8"}
       `}
     >
-      <div className="w-full px-4 sm:px-6 xl:px-20 flex justify-between items-center relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative">
 
         {/* LOGO */}
         <div
-          className="flex items-center gap-2 font-bold text-3xl md:text-4xl tracking-tight cursor-pointer z-50"
+          className="flex items-center gap-2 font-bold text-bold md:text-2xl tracking-tight cursor-pointer z-50"
           onClick={() => navigate("/")}
         >
           <div
@@ -581,7 +581,7 @@ const Navigation = ({
                 : "bg-white text-emerald-700"}
             `}
           >
-            <Leaf size={24} className="fill-current md:w-7 md:h-7" />
+            <Leaf size={20} className="fill-current md:w-6 md:h-6" />
           </div>
           <span className={scrolled || mobileMenuOpen ? "text-gray-900" : "text-white"}>
             Agriassure
@@ -595,13 +595,13 @@ const Navigation = ({
             ${scrolled ? "text-gray-600" : "text-emerald-50"}
           `}
         >
-          <button onClick={() => navigate("/")} className="hover:text-emerald-400 transition text-xl lg:text-3xl">
+          <button onClick={() => navigate("/")} className="hover:text-emerald-400 transition text-sm lg:text-base">
             Home
           </button>
-          <button onClick={() => navigate("/market")} className="hover:text-emerald-400 transition text-xl lg:text-3xl">
+          <button onClick={() => navigate("/market")} className="hover:text-emerald-400 transition text-sm lg:text-base">
             Marketplace
           </button>
-          <button onClick={() => navigate("/prices")} className="hover:text-emerald-400 transition text-xl lg:text-3xl">
+          <button onClick={() => navigate("/prices")} className="hover:text-emerald-400 transition text-sm lg:text-base">
             Mandi Rates
           </button>
         </div>
@@ -610,13 +610,13 @@ const Navigation = ({
         <div className="hidden md:flex items-center gap-3 lg:gap-4">
           {user ? (
             <>
-              <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xl font-medium flex items-center gap-2">
-                <User size={25} /> {user.name} ({user.role})
+              <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium flex items-center gap-2">
+                <User size={14} /> {user.name} ({user.role})
               </span>
 
               <button
                 onClick={() => navigate(`/dashboard/${user.role}`)}
-                className="px-5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full  font-bold shadow-lg shadow-emerald-500/30 transition-transform hover:scale-105 active:scale-95 text-xl"
+                className="px-5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full  font-bold shadow-lg shadow-emerald-500/30 transition-transform hover:scale-105 active:scale-95 text-sm"
               >
                 Dashboard
               </button>
@@ -629,12 +629,12 @@ const Navigation = ({
                 className="text-gray-500 hover:text-red-500 transition"
                 title="Logout"
               >
-                <LogOut size={25} />
+                <LogOut size={18} />
               </button>
             </>
           ) : (
             <>
-              <div className="hidden lg:flex gap-2 text-xl">
+              <div className="hidden lg:flex gap-2 text-xs">
                 <button onClick={() => onDemoLogin("farmer")} className="px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-100">
                   Demo Farmer
                 </button>
@@ -648,7 +648,7 @@ const Navigation = ({
 
               <button
                 onClick={onOpenLogin}
-                className={`px-6 py-3 rounded-full text-2xl lg:3xl font-semibold transition ${
+                className={`px-4 py-2 rounded-full text-2xl lg:3xl font-semibold transition ${
                   scrolled ? "text-gray-600 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 }`}
               >

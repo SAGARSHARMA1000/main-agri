@@ -203,7 +203,7 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6 md:space-y-8 pt-16 md:pt-20">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 text-center text-white space-y-6 md:space-y-8 pt-16 md:pt-20">
           <div className="animate-fade-in-up">
             <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs md:text-lg font-semibold tracking-wide mb-4 md:mb-6 backdrop-blur-sm">
               🚀 Revolutionizing Contract Farming
@@ -230,9 +230,9 @@ export default function Hero() {
           
           {/* Trust Badges */}
           <div className="pt-8 md:pt-12 flex flex-wrap justify-center gap-4 md:gap-8 opacity-70 animate-fade-in-up delay-500 text-sm md:text-base">
-             <div className="flex items-center gap-2"><Shield size={23} className="md:w-[18px] md:h-[18px]"/> Secure Escrow</div>
-             <div className="flex items-center gap-2"><CheckCircle size={23} className="md:w-[18px] md:h-[18px]"/> Legal Compliance</div>
-             <div className="flex items-center gap-2"><Users size={23} className="md:w-[18px] md:h-[18px]"/> 10k+ Farmers</div>
+             <div className="flex items-center gap-2"><Shield size={18} className="md:w-[18px] md:h-[18px]"/> Secure Escrow</div>
+             <div className="flex items-center gap-2"><CheckCircle size={18} className="md:w-[18px] md:h-[18px]"/> Legal Compliance</div>
+             <div className="flex items-center gap-2"><Users size={18} className="md:w-[18px] md:h-[18px]"/> 10k+ Farmers</div>
           </div>
         </div>
         
