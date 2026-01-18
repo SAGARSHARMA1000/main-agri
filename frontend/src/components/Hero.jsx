@@ -75,6 +75,7 @@
 // );
 
 // export default Hero;
+//14/1/2026
 import React, { useState, useEffect } from 'react';
 import { 
   Leaf, 
@@ -203,16 +204,16 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 text-center text-white space-y-6 md:space-y-8 pt-16 md:pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6 md:space-y-8 pt-16 md:pt-20">
           <div className="animate-fade-in-up">
-            <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs md:text-lg font-semibold tracking-wide mb-4 md:mb-6 backdrop-blur-sm">
+            <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs md:text-sm font-semibold tracking-wide mb-4 md:mb-6 backdrop-blur-sm">
               🚀 Revolutionizing Contract Farming
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tight mb-4 md:mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4 md:mb-6">
               Cultivating Trust,<br />
               <span className="text-emerald-400 bg-clip-text">Harvesting Stability.</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-4xl text-gray-200 max-w-7xl mx-auto font-light leading-relaxed px-4">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed px-4">
               The bridge between hardworking farmers and reliable buyers. <br className="hidden md:block"/>
               Secure contracts, transparent payments, and a future you can count on.
             </p>
@@ -246,25 +247,25 @@ export default function Hero() {
       <section id="features" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-6xl font-bold text-gray-900 mb-3 md:mb-4">One Platform, Two Perspectives</h2>
-            <p className="text-base md:text-3xl text-gray-600 max-w-6xl mx-auto px-2">Agriassure adapts to your needs. Select your role to see how we empower you.</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">One Platform, Two Perspectives</h2>
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-2">Agriassure adapts to your needs. Select your role to see how we empower you.</p>
           </div>
 
           {/* Toggle Switch */}
           <div className="flex justify-center mb-8 md:mb-12">
             <div className="bg-white p-1 rounded-full shadow-md border border-gray-200 inline-flex relative scale-90 md:scale-100 transform origin-center">
               <div 
-                className={`absolute top-1 bottom-1 w-[180px] rounded-full bg-emerald-600 transition-all duration-300 ease-in-out ${activeRole === 'buyer' ? 'left-[148px]' : 'left-1'}`}
+                className={`absolute top-1 bottom-1 w-[140px] rounded-full bg-emerald-600 transition-all duration-300 ease-in-out ${activeRole === 'buyer' ? 'left-[148px]' : 'left-1'}`}
               ></div>
               <button 
                 onClick={() => setActiveRole('farmer')}
-                className={`relative z-10 w-[180px] py-3 rounded-full text-xl font-bold transition-colors flex items-center justify-center gap-2 ${activeRole === 'farmer' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}`}
+                className={`relative z-10 w-[140px] py-3 rounded-full text-sm font-bold transition-colors flex items-center justify-center gap-2 ${activeRole === 'farmer' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
-                <Sprout size={25} /> I'm a Farmer
+                <Sprout size={18} /> I'm a Farmer
               </button>
               <button 
                 onClick={() => setActiveRole('buyer')}
-                className={`relative z-10 w-[180px] py-3 rounded-full text-sm font-bold transition-colors flex items-center justify-center gap-2 ${activeRole === 'buyer' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}`}
+                className={`relative z-10 w-[140px] py-3 rounded-full text-sm font-bold transition-colors flex items-center justify-center gap-2 ${activeRole === 'buyer' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 <Briefcase size={18} /> I'm a Buyer
               </button>
@@ -310,7 +311,7 @@ export default function Hero() {
                   alt="Role Context" 
                   className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 animate-fade-in"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-black/40 to-transparent lg:from-transparent lg:to-black/5"></div>
+                <div className="absolute inset-0 bg-linear-to-t lg:bg-linear-to-l from-black/40 to-transparent lg:from-transparent lg:to-black/5"></div>
               </div>
             </div>
           </div>

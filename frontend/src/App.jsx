@@ -285,6 +285,7 @@ import BuyerPaymentDetails from "./sections/buyerSection/BuyerPaymentDetails";
 import BuyerDeliveryDashboard from "./sections/buyerSection/BuyerDeliveryDashboard";
 import FarmerDeliveryDashboard from "./sections/farmerSection/FarmerDeliveryDashboard";
 import BuyerEscrowPaymentPage from "./sections/buyerSection/BuyerEscrowPaymentPage";
+import PreFooterCTA from "./components/PreFooterCta";
 //import ProgressOfBuyer from "./sections/buyerSection/ProgressOfBuyer";
 
   const App = () => {
@@ -594,7 +595,7 @@ useEffect(() => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
-
+      <PreFooterCTA/>
       <Footer />
 
       {/* MODALS */}

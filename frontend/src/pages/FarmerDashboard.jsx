@@ -663,7 +663,7 @@ const handleReject = async (proposalId) => {
 </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="container text-2xl mx-auto px-4 -mt-6">
+      <div className="container text-xl mx-auto px-4 -mt-6">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden min-h-[600px] flex">
 
           {/* ================= SIDEBAR ================= */}

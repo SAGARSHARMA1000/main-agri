@@ -222,7 +222,7 @@ const BuyerDashboard = ({ user, proposals }) => {
 
   return (
     // <div className="bg-gray-50 min-h-screen pb-12">
-<div className="bg-gradient-to-br from-teal-950 via-teal-900 to-teal-950
+<div className="bg-linear-to-br from-teal-950 via-teal-900 to-teal-950
 
  min-h-screen pb-12">
       {/* HEADER */}
@@ -247,7 +247,7 @@ const BuyerDashboard = ({ user, proposals }) => {
 </div>
 
       {/* CONTENT */}
-      <div className="container text-2xl mx-auto px-4 -mt-6">
+      <div className="container text-xl mx-auto px-4 -mt-6">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden min-h-[600px] flex">
 
           {/* SIDEBAR */}
