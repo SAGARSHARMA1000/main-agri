@@ -192,7 +192,7 @@ export default function Hero() {
       </nav> */}
 
       {/* --- Hero Section --- */}
-      <header className="relative h-[98vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <header className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -206,7 +206,7 @@ export default function Hero() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6 md:space-y-8 pt-16 md:pt-20">
           <div className="animate-fade-in-up">
-            <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs md:text-sm font-semibold tracking-wide mb-4 md:mb-4 backdrop-blur-sm">
+            <span className="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs md:text-sm font-semibold tracking-wide mb-2 md:mb-3 backdrop-blur-sm">
               🚀 Revolutionizing Contract Farming
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4 md:mb-6">
