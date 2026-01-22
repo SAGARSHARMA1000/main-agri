@@ -20,14 +20,14 @@ const ContractSignModal = ({ isOpen, onClose, contract, onSigned, user }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl flex flex-col max-h-[90vh]">
         <div className="bg-gray-100 p-4 border-b flex justify-between items-center rounded-t-xl">
           <h3 className="font-bold text-lg flex items-center gap-2"><FileSignature size={20}/> Digital Contract Agreement</h3>
           <button onClick={onClose}><X size={20} className="text-gray-500 hover:text-black"/></button>
         </div>
         
-        <div className="p-6 overflow-y-auto flex-grow bg-gray-50">
+        <div className="p-6 overflow-y-auto grow bg-gray-50">
           <div className="bg-white p-8 shadow-sm border border-gray-200 min-h-[300px] text-sm relative">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-serif font-bold text-gray-800">AGRIASSURE COMMODITY SALE AGREEMENT</h2>

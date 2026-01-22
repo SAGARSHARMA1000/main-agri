@@ -251,6 +251,7 @@ import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 import Marketplace from "./components/MarketPlace";
+import MandiRates from "./components/MandiRates";
 import RegistrationModal from "./components/RegistrationModal";
 import ContractSignModal from "./components/ContractSignModal";
 import PaymentModal from "./components/PaymentModal";
@@ -434,9 +435,6 @@ useEffect(() => {
             element={
               <>
                 <Hero user={user} />
-                <MandiTicker
-            onViewAll={() => navigate("/prices")}
-          />
 
           <CategoryGrid />
 
@@ -462,6 +460,7 @@ useEffect(() => {
             user={user} 
             onSendProposal={handleSendProposal}/>}
           />
+           <Route path="/rates" element={<MandiRates />} />
 
           {/* DASHBOARDS */}
          

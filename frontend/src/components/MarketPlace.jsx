@@ -400,8 +400,10 @@ const Marketplace = ({ listings = [], user, onSendProposal }) => {
   };
 
   return (
-    <div className="py-8 bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-4">
+     <div className="min-h-screen pt-32 md:pt-36
+          bg-linear-to-br from-emerald-950 via-slate-900 to-emerald-950
+           px-4 md:px-8">
+      <div className="max-7xl mx-auto">
 
         {/* FILTERS */}
         {user?.role === "buyer" && (

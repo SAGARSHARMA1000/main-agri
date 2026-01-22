@@ -351,45 +351,6 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* --- Footer CTA --- */}
-      {/* <section className="py-16 md:py-24 bg-emerald-900 text-white relative overflow-hidden"> */}
-        {/* Abstract Background Patterns */}
-        {/* <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-emerald-400/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
-
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">Ready to transform your agriculture business?</h2>
-          <p className="text-lg md:text-xl text-emerald-100 mb-8 md:mb-12 max-w-2xl mx-auto">
-            Join thousands of farmers and buyers building the future of contract farming today.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-             <button className="w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 bg-white text-emerald-900 rounded-full font-bold text-base md:text-lg hover:bg-emerald-50 transition-colors shadow-xl">
-               Get Started Now
-             </button>
-             <button className="w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 bg-transparent border border-emerald-700 text-white rounded-full font-bold text-base md:text-lg hover:bg-emerald-800 transition-colors">
-               Contact Sales
-             </button>
-          </div>
-        </div>
-      </section> */}
-
-      {/* --- Simple Footer --- */}
-      {/* <footer className="bg-gray-900 text-gray-400 py-8 md:py-12 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-white">
-            <Leaf size={20} /> Agriassure
-          </div>
-          <div className="text-xs md:text-sm text-center md:text-left">
-            &copy; 2024 Agriassure Technologies Pvt Ltd. All rights reserved.
-          </div>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
-          </div>
-        </div>
-      </footer> */}
-
     </div>
   );
 }
