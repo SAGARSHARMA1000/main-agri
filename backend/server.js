@@ -66,6 +66,13 @@ app.use('/api/proposals', proposalRoutes);
 app.use('/api/contracts', contractRoutes);
 app.use('/api/escrow', escrowRoutes);
 app.use('/api/delivery', deliveryRoutes);
+
+app.get("/", (req, res) => {
+	return res.json({
+		success: true,
+		message: "Welcome To AGRIASSURE",
+	});
+});
 /* =======================
    ERROR HANDLER
    ======================= */
