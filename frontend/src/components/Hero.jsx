@@ -318,38 +318,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* --- Value Props Grid --- */}
-      <section id="benefits" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
-            {[
-              {
-                icon: Shield,
-                title: "Escrow Protection",
-                desc: "Funds are locked safely in an RBI-compliant escrow account and only released when delivery is verified."
-              },
-              {
-                icon: TrendingUp,
-                title: "Stable Income",
-                desc: "Farmers get guaranteed prices before sowing. Buyers get guaranteed supply volume. No surprises."
-              },
-              {
-                icon: Leaf,
-                title: "Sustainable Growth",
-                desc: "We encourage sustainable farming practices by connecting eco-conscious buyers with organic farmers."
-              }
-            ].map((item, i) => (
-              <div key={i} className="group p-6 md:p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-emerald-600 mb-4 md:mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                  <item.icon size={24} className="md:w-8 md:h-8" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm md:text-base">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
     </div>
   );

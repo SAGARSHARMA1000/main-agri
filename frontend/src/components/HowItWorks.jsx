@@ -1,127 +1,4 @@
-// import React from "react";
-// import { User, Search, TrendingUp, FileSignature, Lock, CheckCircle } from "lucide-react";
 
-// const HowItWorks = () => (
-//   <div className="py-16 bg-white">
-//     <div className="container mx-auto px-4">
-//       <div className="text-center mb-16">
-//         <h2 className="text-5xl font-bold text-gray-800 mb-4">How Agriassure Works</h2>
-//         <p className="text-gray-600 max-w-5xl mx-auto text-2xl">From registration to secure payment release, we ensure every step is transparent and secure.</p>
-//       </div>
-
-//       <div className="grid md:grid-cols-6 gap-4 relative">
-//         <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-green-100 -z-10 transform -translate-y-1/2"></div>
-//         {[
-//           { icon: <User size={24}/>, title: 'Register', desc: 'Create account as Farmer or Buyer.' },
-//           { icon: <Search size={24}/>, title: 'List/Search', desc: 'Farmers list crops, buyers search.' },
-//           { icon: <TrendingUp size={24}/>, title: 'Negotiate', desc: 'Agree on price & quantity.' },
-//           { icon: <FileSignature size={24}/>, title: 'Contract', desc: 'E-sign digital legal contract.' },
-//           { icon: <Lock size={24}/>, title: 'Escrow', desc: 'Buyer funds held securely.' },
-//           { icon: <CheckCircle size={24}/>, title: 'Release', desc: 'Funds released after delivery.' }
-//         ].map((step, idx) => (
-//           <div key={idx} className="flex flex-col items-center text-center group">
-//             <div className="bg-white border-2 border-green-500 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:bg-green-500 group-hover:text-white transition-colors duration-300 z-10">
-//               {step.icon}
-//             </div>
-//             <h3 className="font-bold text-gray-800 mb-2">{step.title}</h3>
-//             <p className="text-xs text-gray-500 px-2">{step.desc}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   </div>
-// );
-
-// export default HowItWorks;
-// import React from "react";
-// import { User, Search, TrendingUp, FileSignature, Lock, CheckCircle } from "lucide-react";
-
-// const HowItWorks = () => (
-//   <section className="min-h-screen bg-white flex items-center">
-//     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      
-//       {/* Heading */}
-//       <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-//         <h2 className="
-//           font-bold text-gray-800 
-//           text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 
-//           mb-4
-//         ">
-//           How Agriassure Works
-//         </h2>
-
-//         <p className="
-//           text-gray-600 
-//           max-w-5xl mx-auto 
-//           text-base sm:text-lg lg:text-2xl
-//         ">
-//           From registration to secure payment release, we ensure every step is transparent and secure.
-//         </p>
-//       </div>
-
-//       {/* Steps */}
-//       <div className="relative">
-//         {/* Connecting Line (desktop only) */}
-//         <div className="hidden md:block absolute top-16 left-0 right-0 h-1 bg-green-100 -z-10"></div>
-
-//         <div className="
-//           grid gap-8
-//           grid-cols-2 sm:grid-cols-3 md:grid-cols-6
-//         ">
-//           {[
-//             { icon: <User />, title: "Register", desc: "Create account as Farmer or Buyer." },
-//             { icon: <Search />, title: "List/Search", desc: "Farmers list crops, buyers search." },
-//             { icon: <TrendingUp />, title: "Negotiate", desc: "Agree on price & quantity." },
-//             { icon: <FileSignature />, title: "Contract", desc: "E-sign digital legal contract." },
-//             { icon: <Lock />, title: "Escrow", desc: "Buyer funds held securely." },
-//             { icon: <CheckCircle />, title: "Release", desc: "Funds released after delivery." }
-//           ].map((step, idx) => (
-//             <div
-//               key={idx}
-//               className="flex flex-col items-center text-center group"
-//             >
-//               {/* Icon */}
-//               <div className="
-//                 bg-white border-2 border-green-500 text-green-600
-//                 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20
-//                 rounded-full flex items-center justify-center
-//                 mb-4 shadow-sm
-//                 group-hover:bg-green-500 group-hover:text-white
-//                 transition-all duration-300 z-10
-//               ">
-//                 {React.cloneElement(step.icon, {
-//                   size: 20,
-//                   className: "sm:w-6 sm:h-6 lg:w-8 lg:h-8"
-//                 })}
-//               </div>
-
-//               {/* Title */}
-//               <h3 className="
-//                 font-bold text-gray-800
-//                 text-sm sm:text-base lg:text-lg
-//                 mb-1
-//               ">
-//                 {step.title}
-//               </h3>
-
-//               {/* Description */}
-//               <p className="
-//                 text-gray-500
-//                 text-xs sm:text-sm lg:text-base
-//                 px-2
-//               ">
-//                 {step.desc}
-//               </p>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//     </div>
-//   </section>
-// );
-
-// export default HowItWorks;
 import React, { useEffect, useRef } from 'react';
 import { User, Search, TrendingUp, FileSignature, Lock, CheckCircle } from "lucide-react";
 
@@ -237,7 +114,7 @@ const TimelineStep = ({ step, title, description, details, icon, image, index, i
                 {details.map((detail, i) => (
                     <li key={i} className="flex items-start gap-2">
                         {/* Dot for bullet point */}
-                        <span className={`mt-1.5 w-1.5 h-1.5 flex-shrink-0 rounded-full bg-green-500 ${isEven ? 'md:order-2 md:ml-2 md:mr-0' : ''}`}></span>
+                        <span className={`mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-green-500 ${isEven ? 'md:order-2 md:ml-2 md:mr-0' : ''}`}></span>
                         <span>{detail}</span>
                     </li>
                 ))}
@@ -271,7 +148,7 @@ const TimelineStep = ({ step, title, description, details, icon, image, index, i
             </div>
             
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
 
             {/* Desktop Icon Badge (Hidden on mobile to save space/clutter) */}
             <div className="hidden md:block absolute bottom-4 right-4 bg-white/90 backdrop-blur text-green-600 p-3 rounded-xl shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
@@ -428,7 +305,7 @@ export default function TimelineApp() {
       <CustomStyles />
       
       {/* Header Section */}
-      <header className="py-16 md:py-24 flex flex-col items-center justify-center bg-gradient-to-b from-green-50 to-white text-center px-4">
+      <header className="py-16 md:py-24 flex flex-col items-center justify-center bg-linear-to-b from-green-50 to-white text-center px-4">
         <div className="bg-green-100 text-green-800 px-4 py-1 rounded-full text-lg md:text-xl font-semibold mb-6 animate-pulse">
             Secure & Transparent
         </div>
@@ -471,14 +348,7 @@ export default function TimelineApp() {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="bg-green-900 py-16 md:py-20 text-center text-white px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to modernize your harvest?</h2>
-          <p className="text-green-100 mb-8 max-w-xl mx-auto text-sm md:text-base">Join thousands of farmers and buyers trusting Agriassure.</p>
-          <button className="bg-white text-green-900 px-6 md:px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors">
-              Create Free Account
-          </button>
-      </section>
+   
     </div>
   );
 }

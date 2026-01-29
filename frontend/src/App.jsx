@@ -12,7 +12,7 @@ import ProblemSolution from "./components/ProblemSolution";
 
 import RegistrationModal from "./components/RegistrationModal";
 
-import LoginModal from "./components/loginModal";
+import LoginModal from "./components/LoginModal";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
