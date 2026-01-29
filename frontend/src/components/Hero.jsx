@@ -1,81 +1,4 @@
-// import React from "react";
-// import { ChevronRight, Search } from "lucide-react";
 
-// const Hero = ({ setActiveTab, user }) => (
-//   <section className="relative min-h-screen bg-green-900 text-white overflow-hidden flex items-center">
-    
-//     {/* Background Image */}
-//     <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center"></div>
-
-//     {/* Content */}
-//     <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-//       <div className="max-w-3xl">
-
-//         {/* Heading */}
-//         <h1
-//           className="
-//             font-bold leading-tight mb-6
-//             text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
-//           "
-//         >
-//           Harvesting Trust, <br />
-//           <span className="text-yellow-400">Delivering Prosperity</span>
-//         </h1>
-
-//         {/* Subheading */}
-//         <p
-//           className="
-//             text-green-100 mb-8
-//             text-base sm:text-lg md:text-xl lg:text-2xl
-//           "
-//         >
-//           The digital bridge between farmers and buyers. Seamless trading, secure payments via Escrow.
-//         </p>
-
-//         {/* CTA Buttons */}
-//         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-          
-//           <button
-//             onClick={() =>
-//               setActiveTab(user?.role === "farmer" ? "dashboard" : "market")
-//             }
-//             className="
-//               bg-yellow-400 text-green-900
-//               px-6 py-3 sm:px-8 sm:py-4
-//               rounded-lg font-bold
-//               text-base sm:text-lg lg:text-xl
-//               hover:bg-yellow-300 transition
-//               shadow-lg
-//               flex items-center justify-center gap-2
-//             "
-//           >
-//             {user?.role === "farmer" ? "Go to Dashboard" : "Start Trading"}
-//             <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
-//           </button>
-
-//           <button
-//             onClick={() => setActiveTab("market")}
-//             className="
-//               bg-transparent border-2 border-white
-//               px-6 py-3 sm:px-8 sm:py-4
-//               rounded-lg font-bold
-//               text-base sm:text-lg lg:text-xl
-//               hover:bg-white hover:text-green-900 transition
-//               flex items-center justify-center gap-2
-//             "
-//           >
-//             Browse Crops
-//             <Search className="w-5 h-5 lg:w-6 lg:h-6" />
-//           </button>
-
-//         </div>
-//       </div>
-//     </div>
-//   </section>
-// );
-
-// export default Hero;
-//14/1/2026
 import React, { useState, useEffect } from 'react';
 import { 
   Leaf, 
@@ -91,7 +14,7 @@ import {
   Briefcase
 } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({onOpenRegister}) {
   const [scrolled, setScrolled] = useState(false);
   const [activeRole, setActiveRole] = useState('farmer'); // 'farmer' or 'buyer'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -220,7 +143,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 animate-fade-in-up delay-200 px-4">
-            <button className="w-full sm:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-bold text-base md:text-lg shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 group">
+            <button onClick={onOpenRegister} className="w-full sm:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-bold text-base md:text-lg shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 group">
               Start Farming Contract
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>

@@ -161,7 +161,7 @@ const TimelineStep = ({ step, title, description, details, icon, image, index, i
   );
 };
 
-export default function TimelineApp() {
+export default function TimelineApp({onOpenRegister}) {
   const containerRef = useRef(null);
   const lineRef = useRef(null);
   
@@ -316,7 +316,7 @@ export default function TimelineApp() {
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed px-2">
             From registration to secure payment release, we ensure every step of your agricultural trade is transparent, efficient, and secure.
         </p>
-        <button className="bg-green-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-green-700 transition-colors transform hover:-translate-y-1">
+        <button onClick={onOpenRegister} className="bg-green-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-green-700 transition-colors transform hover:-translate-y-1">
             Start Trading Today
         </button>
       </header>

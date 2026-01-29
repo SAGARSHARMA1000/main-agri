@@ -2,14 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 
-const PreFooterCTA = () => {
+const PreFooterCTA = ({onOpenRegister}) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50 to-slate-100 py-20 md:py-28"
+      className="relative overflow-hidden bg-linear-to-br from-emerald-50 via-teal-50 to-slate-100 py-20 md:py-28"
     >
       {/* Background blobs */}
       <div className="absolute top-0 right-0 w-72 h-72 md:w-[420px] md:h-[420px] bg-emerald-300/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -29,7 +29,7 @@ const PreFooterCTA = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-5 mb-14">
-          <button className="px-10 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg shadow-xl hover:bg-emerald-700 hover:scale-105 transition">
+          <button onClick={onOpenRegister} className="px-10 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg shadow-xl hover:bg-emerald-700 hover:scale-105 transition">
             Get Started
           </button>
           <button className="px-10 py-4 border-2 border-emerald-600 text-emerald-700 rounded-full font-bold text-lg hover:bg-emerald-50 transition">

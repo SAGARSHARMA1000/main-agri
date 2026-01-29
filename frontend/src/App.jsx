@@ -45,7 +45,6 @@ import FarmerDeliveryDashboard from "./sections/farmerSection/FarmerDeliveryDash
 import BuyerEscrowPaymentPage from "./sections/buyerSection/BuyerEscrowPaymentPage";
 import PreFooterCTA from "./components/PreFooterCta";
 import VideoModal from "./components/VideoModal";
-import MandiRate1 from "./components/MandiTicker";
 //import ProgressOfBuyer from "./sections/buyerSection/ProgressOfBuyer";
 
   const App = () => {
@@ -57,9 +56,6 @@ import MandiRate1 from "./components/MandiTicker";
   // modals
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isContractOpen, setIsContractOpen] = useState(false);
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
-  const [currentContract, setCurrentContract] = useState(null);
   const [showVideoModal, setShowVideoModal] = useState(false);
 
   // data
@@ -116,24 +112,7 @@ useEffect(() => {
     navigate("/");
   };
 
-// const handleListingCreated = (newListing) => {
-//   setListings((prev) => [newListing, ...prev]);
-// };
 
-// const handleLogin = (userData) => {
-//     console.log("🚀 Logged in user in App:", userData);
-
-//     setUser(userData);
-
-//     // 🔥 ROLE-BASED ROUTING
-//     if (userData.role === "farmer") {
-//       navigate("/dashboard/farmer");
-//     } else if (userData.role === "buyer") {
-//       navigate("/dashboard/buyer");
-//     } else if (userData.role === "admin") {
-//       navigate("/dashboard/admin");
-//     }
-//   };
 const [proposals, setProposals] = useState([]);
 const fetchProposals = async () => {
   const res = await api.getAllProposals(); // or buyer/farmer specific
@@ -163,12 +142,7 @@ const handleUpdateProposalStatus = async (proposalId, status) => {
   }
 };
 
- 
-// useEffect(() => {
-//   api.fetchListings()
-//     .then(res => setListings(res.data))
-//     .catch(err => console.error(err));
-// }, []);
+
 
 useEffect(() => {
   console.log("🔄 Global proposals updated:", proposals);
@@ -194,15 +168,17 @@ useEffect(() => {
             path="/"
             element={
               <>
-          <Hero user={user} />
+          <Hero user={user}
+          onOpenRegister={() => setIsRegisterOpen(true)}
+           />
           <WhyAgriassure />
           <ProblemSolution />
           {/* <CategoryGrid /> */}
-          <HowItWorks />
+          <HowItWorks onOpenRegister={() => setIsRegisterOpen(true)} />
           <Features />
           <MandiTicker/>
           <Testimonials setShowVideoModal={setShowVideoModal}/>
-          <PreFooterCTA />
+          <PreFooterCTA onOpenRegister={() => setIsRegisterOpen(true)} />
         {showVideoModal && (
      <VideoModal setShowVideoModal={setShowVideoModal} />
          )}
