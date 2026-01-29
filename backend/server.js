@@ -33,10 +33,10 @@ connectDB();
 /* =======================
    🔥 CORS — MUST BE FIRST
    ======================= */
-const CLIENT_URL = "http://localhost:5173"||"http://localhost:5174";
+// const CLIENT_URL = "http://localhost:5173"||"http://localhost:5174";
 
 app.use(cors({
-  origin: CLIENT_URL,
+  origin:"*",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
