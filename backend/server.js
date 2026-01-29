@@ -36,7 +36,7 @@ connectDB();
 // const CLIENT_URL = "http://localhost:5173"||"http://localhost:5174";
 
 app.use(cors({
-  origin:"https://main-agri-ifq0jibhj-sagars-projects-2e383099.vercel.app",
+  origin:"https://main-agri.vercel.app",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
