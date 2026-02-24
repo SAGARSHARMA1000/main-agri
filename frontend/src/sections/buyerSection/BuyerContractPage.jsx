@@ -1,302 +1,3 @@
-// import React, { useState } from "react";
-// import {
-//   FileText,
-//   CheckCircle,
-//   Edit3,
-//   Printer,
-//   Download,
-//   ShieldCheck,
-//   AlertTriangle,
-//   Send,
-//   Save,
-//   Clock,
-//   ChevronLeft
-// } from "lucide-react";
-// import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
-
-// /* ---------------- STATUS BANNER ---------------- */
-
-// const StatusBanner = ({ status }) => {
-//   const configs = {
-//     DRAFT: {
-//       color: "bg-gray-50 border-gray-200 text-gray-800",
-//       icon: Clock,
-//       text: "Draft Mode: Edit contract details before sending to farmer."
-//     },
-//     SENT_TO_FARMER: {
-//       color: "bg-blue-50 border-blue-200 text-blue-800",
-//       icon: Send,
-//       text: "Contract Sent: Waiting for farmer approval."
-//     },
-//     NEGOTIATION: {
-//       color: "bg-orange-50 border-orange-200 text-orange-800",
-//       icon: Edit3,
-//       text: "Negotiation: Farmer requested changes."
-//     },
-//     ACTIVE: {
-//       color: "bg-emerald-50 border-emerald-200 text-emerald-800",
-//       icon: ShieldCheck,
-//       text: "Contract Active: Legally binding."
-//     }
-//   };
-
-//   const config = configs[status] || configs.DRAFT;
-//   const Icon = config.icon;
-
-//   return (
-//     <div className={`flex items-center gap-3 p-4 rounded-lg border ${config.color} mb-6 shadow-sm`}>
-//       <Icon size={24} />
-//       <span className="font-semibold">{config.text}</span>
-//     </div>
-//   );
-// };
-
-// /* ---------------- MAIN COMPONENT ---------------- */
-
-//export default function BuyerContracts() {
-//   const navigate = useNavigate();
-//    const location = useLocation();
-//   const { state } = useLocation();
-//   const proposal = state?.proposal;
-//   console.log("📍 Drafting route location:", location)
-//   //const { proposals, user } = useOutletContext();
-
-//   /* ---------------- SAFETY ---------------- */
-//   if (!proposal) {
-//     return <div className="p-6 text-center text-gray-500">No proposal data found.</div>;
-//   }
-
-//   /* ---------------- STATUS FOR PROGRESS TRACKER ---------------- */
-//   const [contractStatus, setContractStatus] = useState("DRAFT");
-//   const [status, setStatus] = useState("DRAFT");
-//   const [isEditing, setIsEditing] = useState(true);
-
-//   /* ---------------- BUYER SIGNATURE ---------------- */
-//   const [buyerSignature, setBuyerSignature] = useState({
-//     name: "",
-//     image: null
-//   });
-
-//   const handleSignatureUpload = (e) => {
-//     const file = e.target.files[0];
-//     if (file) {
-//       setBuyerSignature(prev => ({
-//         ...prev,
-//         image: URL.createObjectURL(file)
-//       }));
-//     }
-//   };
-
-//   const handleSignatureName = (e) => {
-//     setBuyerSignature(prev => ({
-//       ...prev,
-//       name: e.target.value
-//     }));
-//   };
-
-//   /* ---------------- CONTRACT DATA FROM PROPOSAL ---------------- */
-
-//   const [contractData, setContractData] = useState({
-//     id: proposal._id,
-//     createdDate: new Date().toISOString().split("T")[0],
-
-//     buyer: {
-//       name: proposal.buyerName,
-//       address: proposal.buyerAddress,
-//       repName: proposal.buyerRep
-//     },
-
-//     farmer: {
-//       name: proposal.sellerName,
-//       regId: proposal.sellerId,
-//       address: proposal.sellerAddress
-//     },
-
-//     cropDetails: {
-//       name: proposal.commodity,
-//       variety: proposal.variety,
-//       grade: proposal.grade,
-//       quantity: proposal.quantity,
-//       pricePerQuintal: proposal.offerPrice,
-//       packaging: proposal.packaging
-//     },
-
-//     delivery: {
-//       deadline: proposal.pickupDate,
-//       location: proposal.listing?.location
-//     },
-
-//     payment: {
-//       mode: "Escrow Account",
-//       advance: 30,
-//       balanceTerms: "Within 48 hours of Quality Check"
-//     },
-
-//     clauses: proposal.clauses || {}
-//   });
-
-  /* ---------------- EDITABLE FIELD ---------------- */
-
-//   const EditableField = ({ label, value, section, field, type = "text", suffix = "" }) => {
-//     const handleChange = (e) => {
-//       setContractData(prev => ({
-//         ...prev,
-//         [section]: {
-//           ...prev[section],
-//           [field]: type === "number" ? Number(e.target.value) : e.target.value
-//         }
-//       }));
-//     };
-
-//     if (isEditing) {
-//       return (
-//         <div className="bg-yellow-50 p-2 rounded border border-yellow-200">
-//           <label className="block text-xs text-yellow-800 font-bold mb-1">
-//             {label} (Editing)
-//           </label>
-//           <div className="flex items-center">
-//             <input
-//               type={type}
-//               value={value}
-//               onChange={handleChange}
-//               className="w-full bg-white border border-gray-300 rounded px-2 py-1 text-sm"
-//             />
-//             {suffix && <span className="ml-2 text-sm text-gray-600">{suffix}</span>}
-//           </div>
-//         </div>
-//       );
-//     }
-
-//     return <span className="font-semibold text-gray-900">{value} {suffix}</span>;
-//   };
-
-//   /* ---------------- ACTION HANDLERS ---------------- */
-
-//   const handleSaveDraft = () => {
-//     alert("Draft saved (UI simulation).");
-//   };
-
-//   const handleSendToFarmer = () => {
-//     if (!buyerSignature.name || !buyerSignature.image) {
-//       alert("Please upload your signature and type your name.");
-//       return;
-//     }
-
-//     setIsEditing(false);
-//     setStatus("SENT_TO_FARMER");
-//     setContractStatus("CONTRACT_SENT");
-//   };
-
-//   /* ---------------- RENDER ---------------- */
-
-//   return (
-//      <div className="min-h-screen bg-gray-100 p-4 md:p-8 font-sans">
-
-//        {/* Header */}
-//        <div className="max-w-4xl mx-auto mb-6 flex items-center justify-between">
-//          <button
-//            onClick={() => navigate(-1)}
-//            className="flex items-center text-gray-600 hover:text-gray-900"
-//          >
-//            <ChevronLeft size={20} />
-// //           <span className="font-medium">Back to Dashboard</span>
-// //         </button>
-// //         <div className="flex gap-2">
-// //           <button className="flex items-center gap-2 px-3 py-2 bg-white rounded border">
-// //             <Printer size={16} /> Print
-// //           </button>
-// //           <button className="flex items-center gap-2 px-3 py-2 bg-white rounded border">
-// //             <Download size={16} /> Download PDF
-// //           </button>
-// //         </div>
-//        </div>
-
-//       <div className="max-w-4xl mx-auto">
-//         <StatusBanner status={status} />
-
-//         {/* ---------------- SIGNATURE SECTION (UI UNCHANGED) ---------------- */}
-
-//         <section className="pt-8 mt-8 border-t-2 border-dashed border-gray-300">
-//           <div className="grid grid-cols-2 gap-12">
-
-//             {/* Buyer Signature */}
-//             <div className="text-center">
-//               <div className="h-20 flex flex-col items-center justify-center mb-2 gap-2">
-//                 {buyerSignature.image ? (
-//                   <img
-//                     src={buyerSignature.image}
-//                     alt="Buyer Signature"
-//                     className="h-12 object-contain"
-//                   />
-//                 ) : (
-//                   <input
-//                     type="file"
-//                     accept="image/*"
-//                     onChange={handleSignatureUpload}
-//                     className="text-xs"
-//                   />
-//                 )}
-
-//                 <input
-//                   type="text"
-//                   placeholder="Type your full name"
-//                   value={buyerSignature.name}
-//                   onChange={handleSignatureName}
-//                   className="text-xs border-b border-gray-400 text-center focus:outline-none"
-//                 />
-//               </div>
-
-//               <div className="border-t border-gray-400 w-3/4 mx-auto pt-2">
-//                 <p className="font-bold text-sm">Authorized Signature (Buyer)</p>
-//               </div>
-//             </div>
-
-//             {/* Farmer Signature Slot */}
-//             <div className="text-center">
-//               <div className="h-20 flex items-center justify-center mb-2">
-//                 <div className="text-gray-400 text-xs italic bg-gray-100 px-4 py-2 rounded">
-//                   Waiting for farmer signature...
-//                 </div>
-//               </div>
-//               <div className="border-t border-gray-400 w-3/4 mx-auto pt-2">
-//                 <p className="font-bold text-sm">Authorized Signature (Farmer)</p>
-//               </div>
-//             </div>
-
-//           </div>
-//         </section>
-
-//         {/* ---------------- STICKY ACTION BAR ---------------- */}
-
-//         {status === "DRAFT" && (
-//           <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-white p-4 rounded-xl shadow-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
-//             <div className="text-sm text-gray-600">
-//               <p className="font-bold text-gray-800">Draft Contract</p>
-//               <p>Edit and send to farmer for approval.</p>
-//             </div>
-
-//             <div className="flex gap-3 w-full md:w-auto">
-//               <button
-//                 onClick={handleSaveDraft}
-//                 className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center gap-2"
-//               >
-//                 <Save size={18} /> Save Draft
-//               </button>
-
-//               <button
-//                 onClick={handleSendToFarmer}
-//                 className="px-8 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-bold shadow-lg flex items-center gap-2"
-//               >
-//                 <Send size={20} /> Send to Farmer
-//               </button>
-//             </div>
-//           </div>
-//         )}
-
-//       </div>
-//     </div>
-//   );
- //}
 import React, { useEffect,useState } from "react";
 import {
   FileText,
@@ -391,6 +92,7 @@ export default function BuyerContracts() {
   // ✅ proposal is OPTIONAL (template must render without it)
   const proposal = state?.proposal;
   // ✅ outlet context (for future use / consistency)
+  const outletContext = useOutletContext() || {};
   const { proposals, user } = useOutletContext();
   
   console.log("🆔 proposalId from URL:", proposalId);
@@ -537,6 +239,10 @@ setStatus(res.data.status || "draft");
 
   /* ---------------- ACTION HANDLERS ---------------- */
 
+  const handleBack = () => {
+  navigate("/dashboard/buyer/contracts", { replace: true });
+};
+
   const handleSaveDraft = () => {
     alert("Draft saved (UI simulation).");
   };
@@ -552,7 +258,10 @@ setStatus(res.data.status || "draft");
   //   setContractStatus("CONTRACT_SENT");
   // };
 const handleSendToFarmer = async () => {
-
+    if (!contractId) {
+    alert("Contract not loaded yet.");
+    return;
+  }
    const confirmSend = window.confirm(
     "Please review the contract carefully.\nOnce sent, you cannot edit it.\n\nDo you want to continue?"
   );
@@ -564,7 +273,7 @@ const handleSendToFarmer = async () => {
   }
 
   try {
-        setIsSending(true); // 🔥 start animation
+    setIsSending(true); // 🔥 start animation
     const formData = new FormData();
     formData.append("name", buyerSignature.name);
     formData.append("signature", buyerSignature.image);
@@ -580,9 +289,9 @@ const handleSendToFarmer = async () => {
     setIsEditing(false);
 
         // ✅ Smooth transition instead of white screen
-    setTimeout(() => {
-      navigate("/dashboard/buyer/contracts");
-    }, 800);
+    // setTimeout(() => {
+    //   navigate("/dashboard/buyer/contracts");
+    // }, 800);
 
   } catch (err) {
     console.error(
@@ -601,7 +310,7 @@ const handleSendToFarmer = async () => {
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-6 flex items-center justify-between">
         <button
-          onClick={() => navigate(-1)}
+          onClick={handleBack}
           className="flex items-center text-gray-600 hover:text-gray-900"
         >
           <ChevronLeft size={20} />
@@ -675,11 +384,12 @@ const handleSendToFarmer = async () => {
                   <tbody>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold w-1/3">Crop Variety</td>
-                      {/* <td className="p-3">{contractData.cropDetails.name} ({contractData.cropDetails.variety})</td> */}
+                      <td className="p-3">{contractData.cropDetails.name} ({contractData.cropDetails.variety})</td>
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold">Quality Grade</td>
                       {/* <td className="p-3">{contractData.cropDetails.grade}</td> */}
+                        <td className="p-3">Standard</td> 
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold">Quantity Agreed</td>
@@ -688,7 +398,7 @@ const handleSendToFarmer = async () => {
                           section="cropDetails" field="quantity" 
                           value={contractData.cropDetails.quantity} 
                           type="number" suffix="Quintals" label="Quantity"
-                        /> */} {contractData.cropDetails.quantity} {contractData.cropDetails.unit}
+                        /> */} {contractData.cropDetails?.quantity} {contractData.cropDetails?.unit}
                       </td>
                     </tr>
                     <tr className="border-b border-gray-200">
@@ -698,13 +408,13 @@ const handleSendToFarmer = async () => {
                           section="cropDetails" field="pricePerQuintal" 
                           value={contractData.cropDetails.pricePerQuintal} 
                           type="number" suffix="INR / Quintal" label="Price"
-                        /> */}  ₹{contractData.cropDetails.pricePerQuintal} per {contractData.cropDetails.unit}
+                        /> */}  ₹{contractData.cropDetails?.pricePerQuintal} per {contractData.cropDetails?.unit}
                       </td>
                     </tr>
                     <tr className="bg-emerald-50">
                       <td className="p-3 font-bold text-emerald-800">Total Contract Value</td>
                       <td className="p-3 font-bold text-emerald-800 text-lg">
-                        ₹{(contractData.cropDetails.quantity * contractData.cropDetails.pricePerQuintal).toLocaleString()}
+                        ₹{(contractData.cropDetails?.quantity * contractData.cropDetails?.pricePerQuintal).toLocaleString()}
                       </td>
                     </tr>
                   </tbody>
@@ -721,7 +431,7 @@ const handleSendToFarmer = async () => {
                    <ul className="list-disc list-inside text-sm space-y-2">
                      <li>
                        <span className="text-gray-500">Deadline:</span>{' '}
-                      {contractData.delivery.deadline} 
+                      {contractData.delivery?.deadline} 
                      </li>
                      {/* <li>
                        <span className="text-gray-500">Location:</span> {contractData.delivery.location}
@@ -757,7 +467,7 @@ const handleSendToFarmer = async () => {
     ) : (
       <>
         <span className="font-semibold text-gray-900">
-          {contractData.delivery.location}
+          {contractData.delivery?.location}
         </span>
         <button
           onClick={() => setIsEditingLocation(true)}
@@ -771,14 +481,14 @@ const handleSendToFarmer = async () => {
 </li>
 
 
-                     <li><span className="text-gray-500">Packaging:</span> {contractData.cropDetails.packaging}</li>
+                     <li><span className="text-gray-500">Packaging:</span> {contractData.cropDetails?.packaging}</li>
                    </ul>
                 </div>
                 <div>
                    <h4 className="font-bold text-sm mb-2">3.2 Payment Schedule</h4>
                    <ul className="list-disc list-inside text-sm space-y-2">
-                     <li><span className="text-gray-500">Mode:</span> {contractData.payment.mode}</li>
-                     <li><span className="text-gray-500">Advance:</span> {contractData.payment.advance}% upon signing</li>
+                     <li><span className="text-gray-500">Mode:</span> {contractData.payment?.mode}</li>
+                     <li><span className="text-gray-500">Advance:</span> {contractData.payment?.advance}% upon signing</li>
                      <li><span className="text-gray-500">Balance:</span>Within 24 hours of delivery</li>
                    </ul>
                 </div>
@@ -871,19 +581,14 @@ const handleSendToFarmer = async () => {
                  <Save size={23} /> Save Draft
                </button>
 
-               {/* <button
-                 onClick={handleSendToFarmer}
-                 className="px-8 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-bold shadow-lg flex items-center gap-2"
-               >
-                 <Send size={23} /> Send to Farmer              
-              </button> */}
+          
               <button
   onClick={handleSendToFarmer}
   disabled={isSending}
   className={`px-8 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2 transition-all
     ${isSending
-      ? "bg-blue-400 cursor-not-allowed"
-      : "bg-blue-600 hover:bg-blue-700 text-white"}
+      ? "bg-green-400 cursor-not-allowed"
+      : "bg-green-600 hover:bg-green-700 text-white"}
   `}
 >
   {isSending ? (
@@ -904,15 +609,15 @@ const handleSendToFarmer = async () => {
        )}
        {/* WAITING FOR FARMER */}
 {status === "sent_to_farmer" && (
-  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-blue-50 p-4 rounded-xl shadow-lg border border-blue-200 flex items-center justify-between">
-    <div className="text-sm text-blue-800">
+  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-green-50 p-4 rounded-xl shadow-lg border border-green-200 flex items-center justify-between">
+    <div className="text-sm text-green-800">
       <p className="font-bold">Waiting for Farmer Response</p>
       <p>The contract has been sent and is awaiting farmer’s signature.</p>
     </div>
 
     <button
       disabled
-      className="px-6 py-3 rounded-lg bg-blue-200 text-blue-700 font-bold cursor-not-allowed"
+      className="px-6 py-3 rounded-lg bg-green-200 text-green-700 font-bold cursor-not-allowed"
     >
       Awaiting Approval
     </button>
@@ -927,23 +632,7 @@ const handleSendToFarmer = async () => {
       <p>This contract is legally binding and locked.</p>
     </div>
 
-    <button
-      onClick={() => navigate(`/dashboard/buyer/contracts/${contractId}`)}
-      className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-    >
-      View Contract
-    </button>
-  </div>)}
-
-  {status === "active" && (
-  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-emerald-50 p-4 rounded-xl shadow-lg border border-emerald-200 flex items-center justify-between">
-    
-    <button
-      onClick={() => navigate(`/dashboard/buyer/payments/${contractId}`)}
-      className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-    >
-      next step
-    </button>
+ 
   </div>)}
 
 

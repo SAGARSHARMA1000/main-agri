@@ -58,61 +58,6 @@ export default function Hero({onOpenRegister}) {
 
   return (
     <div className="min-h-screen font-sans text-gray-900 overflow-x-hidden selection:bg-emerald-200">
-      
-      {/* --- Navigation --- */}
-      {/* <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3 md:py-4' : 'bg-transparent py-4 md:py-6'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative">
-          <div className="flex items-center gap-2 font-bold text-xl md:text-2xl tracking-tight z-50 relative">
-            <div className={`p-1.5 md:p-2 rounded-lg ${scrolled || mobileMenuOpen ? 'bg-emerald-100 text-emerald-700' : 'bg-white text-emerald-700'}`}>
-              <Leaf size={20} className="fill-current md:w-6 md:h-6" />
-            </div>
-            <span className={scrolled || mobileMenuOpen ? 'text-gray-900' : 'text-white'}>Agriassure</span>
-          </div> */}
-
-          {/* Desktop Menu */}
-          {/* <div className={`hidden md:flex items-center gap-6 lg:gap-8 font-medium ${scrolled ? 'text-gray-600' : 'text-emerald-50'}`}>
-            <a href="#features" className="hover:text-emerald-400 transition-colors text-sm lg:text-base">How it Works</a>
-            <a href="#benefits" className="hover:text-emerald-400 transition-colors text-sm lg:text-base">Benefits</a>
-            <a href="#testimonials" className="hover:text-emerald-400 transition-colors text-sm lg:text-base">Success Stories</a>
-          </div>
-
-          <div className="hidden md:flex items-center gap-3 lg:gap-4">
-            <button className={`px-4 lg:px-5 py-2 rounded-full font-medium text-sm lg:text-base transition-colors ${scrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
-              Log In
-            </button>
-            <button className="px-5 lg:px-6 py-2 lg:py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-bold shadow-lg shadow-emerald-500/30 transition-transform hover:scale-105 active:scale-95 text-sm lg:text-base">
-              Get Started
-            </button>
-          </div> */}
-
-          {/* Mobile Toggle */}
-          {/* <button 
-            className="md:hidden z-50 p-2 rounded-md focus:outline-none" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? (
-              <X className="text-gray-900" size={24} />
-            ) : (
-              <Menu className={scrolled ? 'text-gray-900' : 'text-white'} size={24} />
-            )}
-          </button>
-        </div> */}
-
-        {/* Mobile Menu Overlay */}
-        {/* {mobileMenuOpen && (
-          <div className="absolute top-0 left-0 w-full h-screen bg-white z-40 flex flex-col pt-24 px-6 animate-fade-in md:hidden">
-            <div className="flex flex-col gap-6 text-lg font-medium text-gray-800">
-              <a href="#features" onClick={() => setMobileMenuOpen(false)} className="border-b border-gray-100 pb-2">How it Works</a>
-              <a href="#benefits" onClick={() => setMobileMenuOpen(false)} className="border-b border-gray-100 pb-2">Benefits</a>
-              <a href="#testimonials" onClick={() => setMobileMenuOpen(false)} className="border-b border-gray-100 pb-2">Success Stories</a>
-              <div className="flex flex-col gap-3 mt-4">
-                <button className="w-full py-3 rounded-lg border border-gray-200 font-bold text-gray-700">Log In</button>
-                <button className="w-full py-3 bg-emerald-600 text-white rounded-lg font-bold shadow-lg">Get Started</button>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav> */}
 
       {/* --- Hero Section --- */}
       <header className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">

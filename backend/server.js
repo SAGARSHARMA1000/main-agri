@@ -7,6 +7,7 @@ const path = require('path');
 
 const connectDB = require('./config/db');
 const { errorHandler } = require('./middleware/errorHandler');
+const uploadRoutes = require("./routes/uploadRoutes");
 
 //const { autoReleaseEscrow } = require("./jobs/autoConfirmDelivery");
 //setInterval(autoReleaseEscrow, 60 * 60 * 1000); // every hour
@@ -55,7 +56,9 @@ app.use(morgan('dev'));
 /* =======================
    STATIC FILES
    ======================= */
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Connect route
+app.use("/api", uploadRoutes);
 
 /* =======================
    ROUTES

@@ -1,47 +1,4 @@
-// import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
-// import api from "../../services/api";
 
-// export default function FarmerContractView() {
-//   const { contractId } = useParams();
-//   const [signature, setSignature] = useState(null);
-//   const [name, setName] = useState("");
-
-//   const handleAccept = async () => {
-//     if (!signature || !name) {
-//       alert("Upload signature and enter name");
-//       return;
-//     }
-
-//     const formData = new FormData();
-//     formData.append("signature", signature);
-//     formData.append("name", name);
-//     console.log("🖊️ Farmer signing contract:", contractId);
-//     //console.log("📦 FormData name:", farmerName);
-//     //console.log("📦 FormData file:", signatureFile);
-
-//     try {
-//       await api.farmerSignContract(contractId, formData);
-//       alert("✅ Contract accepted & signed");
-//     } catch (err) {
-//       console.error("❌ Farmer sign failed", err);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <input type="file" onChange={e => setSignature(e.target.files[0])} />
-//       <input
-//         type="text"
-//         placeholder="Your Name"
-//         value={name}
-//         onChange={e => setName(e.target.value)}
-//       />
-//       <button onClick={handleAccept} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold">
-//        Accept & Sign</button>
-//     </>
-//   );
-// }
 import React, { useEffect, useState } from "react";
 import {
   ShieldCheck,
@@ -122,39 +79,7 @@ export default function FarmerContractView() {
 
   /* ---------------- FETCH CONTRACT ---------------- */
 
-  // useEffect(() => {
-  //   api.get(`/api/contracts/${contractId}`).then(res => {
-  //     const c = res.data;
-
-  //     setContractData({
-  //       id: c._id,
-  //       createdDate: c.createdAt?.split("T")[0],
-  //       buyer: {
-  //         name: c.buyerName,
-  //         address: c.deliveryAddress
-  //       },
-  //       farmer: {
-  //         name: c.farmerName,
-  //         address: c.farmAddress
-  //       },
-  //       cropDetails: {
-  //         name: c.commodity,
-  //         quantity: c.quantity,
-  //         unit: c.unit,
-  //         pricePerQuintal: c.offerPrice
-  //       },
-  //       delivery: {
-  //         deadline: c.pickupDate,
-  //         location: c.deliveryAddress
-  //       },
-  //       payment: c.payment,
-  //       buyerSignature: c.buyerSignature,
-  //       farmerSignature: c.farmerSignature
-  //     });
-
-  //     setStatus(c.status);
-  //   });
-  // }, [contractId]);
+ 
   useEffect(() => {
   if (!contractId) return;
 
@@ -394,41 +319,76 @@ const handleReject = async () => {
           {/* End Document Body */}
        <div/>
 
-          {/* Buyer Signature */}
+       
           
-           <section className="pt-8 mt-8 border-t-2 border-dashed border-gray-300">
-           <div className="grid grid-cols-2 gap-12">
-          <div className="text-center mb-8 ">
-          {contractData.buyerSignature?.image && (
-             <>
-      <img
-        src={`http://localhost:4000/${contractData.buyerSignature.image}`}
-        className="h-12 mx-auto object-contain"
-        alt="Buyer Signature"
-      />
-      <p className="text-sm font-semibold mt-2">
-        Signed by {contractData.buyerSignature.name}
-      </p>
-    </>
-  )}
-</div>
-  
+       
+        <section className="pt-8 mt-8 border-t-2 border-dashed border-gray-300">
+  <div className="grid grid-cols-2 gap-12">
 
-          {/* Farmer Signature */}
-          {status === "sent_to_farmer" && (
-            <div className="text-center space-y-3">
-              <input type="file" onChange={e => setSignature(e.target.files[0])} />
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                className="border-b text-center"
-              />
-            </div>
-          )}
-           </div>
-        </section>
+    {/* Buyer Signature */}
+    <div className="text-center mb-8">
+      {contractData?.buyerSignature?.image && (
+        <>
+          <img
+            src={contractData.buyerSignature.image}
+            className="h-16 mx-auto object-contain border"
+            alt="Buyer Signature"
+          />
+          <p className="text-sm font-semibold mt-2">
+            Signed by {contractData.buyerSignature.name}
+          </p>
+        </>
+      )}
+    </div>
+
+    {/* Farmer Signature */}
+    <div className="text-center">
+      {contractData?.farmerSignature?.image ? (
+        <>
+          <img
+            src={contractData.farmerSignature.image}
+            className="h-16 mx-auto object-contain border"
+            alt="Farmer Signature"
+          />
+          <p className="text-sm font-semibold mt-2">
+            Signed by {contractData.farmerSignature.name}
+          </p>
+        </>
+      ) : status === "sent_to_farmer" ? (
+        <div className="space-y-3">
+          <input
+            type="file"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              setSignature(file);
+
+              // 🔥 show preview immediately
+              if (file) {
+                const previewUrl = URL.createObjectURL(file);
+                setContractData((prev) => ({
+                  ...prev,
+                  farmerSignature: {
+                    ...prev.farmerSignature,
+                    image: previewUrl,
+                    name: name || "",
+                  },
+                }));
+              }
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border-b text-center"
+          />
+        </div>
+      ) : null}
+    </div>
+
+  </div>
+</section>
 
         </div>
 

@@ -169,7 +169,7 @@ exports.buyerSignContract = async (req, res) => {
     console.log("BODY:", req.body);
     console.log("FILE:", req.file); // 👈 DEBUG
 
-    if (!req.file) {
+    if (!req.file || !req.body.name) {
       return res.status(400).json({
         message: "Signature file not received",
       });
@@ -182,13 +182,13 @@ exports.buyerSignContract = async (req, res) => {
     if (!contract) {
       return res.status(404).json({ message: "Contract not found" });
     }
-
-    // contract.buyerSignature = {
-    //   name:name,
-    //   image: req.file.path, // ✅ now safe
-    //   signed: true,
-    //   signedAt: new Date(),
-    // };
+   // Prevent re-signing
+    if (contract.signatures?.buyerSignatureUrl) {
+      return res.status(400).json({
+        message: "Buyer already signed",
+      });
+    }
+  
         // ✅ SAVE EXACTLY AS PER SCHEMA
     contract.signatures.buyerName = name;
     contract.signatures.buyerSignatureUrl = req.file.path;
@@ -205,15 +205,6 @@ exports.buyerSignContract = async (req, res) => {
 };
 
 
-// exports.getFarmerContracts = async (req, res) => {
-//   const { farmerId } = req.params;
-
-//   const contracts = await Contract.find({
-//     "farmer.id": farmerId
-//   });
-
-//   res.json(contracts);
-// };
 exports.getFarmerContracts = async (req, res) => {
   try {
     const { farmerId } = req.params;
@@ -266,6 +257,20 @@ exports.farmerSignContract = async (req, res) => {
     //   signed: true,
     //   signedAt: new Date()
     // };
+
+     // Ensure buyer signed first
+    if (!contract.signatures?.buyerSignatureUrl) {
+      return res.status(400).json({
+        message: "Buyer must sign first",
+      });
+    }
+
+    // Prevent re-signing
+    if (contract.signatures?.farmerSignatureUrl) {
+      return res.status(400).json({
+        message: "Farmer already signed",
+      });
+    }
     contract.signatures.farmerName = name;
     contract.signatures.farmerSignatureUrl = req.file.path.replace(/\\/g, "/");
 

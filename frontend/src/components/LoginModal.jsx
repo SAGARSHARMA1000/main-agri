@@ -67,7 +67,12 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-cover bg-center backdrop-blur-sm p-4"
+    style={{
+    backgroundImage:
+      "url('https://res.cloudinary.com/dtbuqsryl/image/upload/v1771403701/Gemini_Generated_Image_ltuieeltuieeltui_bnu3ct.png')",
+  }}
+    >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
         
         <div className="bg-green-700 p-6 flex justify-between items-center">

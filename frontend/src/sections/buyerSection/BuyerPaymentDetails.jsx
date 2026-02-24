@@ -851,7 +851,7 @@ export default function BuyerPaymentDetails() {
 
         <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-600">
           <div className="p-4 border rounded-lg">
-            <FileText className="mx-auto mb-2 text-blue-500" />
+            <FileText className="mx-auto mb-2 text-green-500" />
             Payments are triggered only after contract activation.
           </div>
           <div className="p-4 border rounded-lg">
@@ -954,6 +954,19 @@ export default function BuyerPaymentDetails() {
                   className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 flex items-center gap-2"
                 >
                   Pay Amount
+                  <AlertCircle size={16} />
+                </button>
+              </div>
+            )}
+             {escrow && (
+              <div className="mt-6">
+                <button
+                  onClick={() =>
+                    navigate(`/dashboard/buyer/payments/${contract._id}`)
+                  }
+                  className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 flex items-center gap-2"
+                >
+                  Payment Details
                   <AlertCircle size={16} />
                 </button>
               </div>

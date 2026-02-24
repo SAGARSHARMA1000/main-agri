@@ -177,7 +177,8 @@ export default function TimelineApp({onOpenRegister}) {
         "Role selection (Farmer/Buyer)"
       ],
       icon: <User />,
-      image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80"
+      image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771353572/step1_phgexi.png"
+      // image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80"
     },
     {
       step: 2,
@@ -189,7 +190,8 @@ export default function TimelineApp({onOpenRegister}) {
         "Real-time market availability"
       ],
       icon: <Search />,
-      image: "https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=800&q=80"
+      image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771353575/step2_bx8u3j.png"
+      //image: "https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=800&q=80"
     },
     {
       step: 3,
@@ -201,7 +203,8 @@ export default function TimelineApp({onOpenRegister}) {
         "Transparent quantity adjustments"
       ],
       icon: <TrendingUp />,
-      image: "https://images.unsplash.com/photo-1521791136064-7985c2717883?auto=format&fit=crop&w=800&q=80"
+      image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771354530/step3_f2d2fz.png"
+     // image: "https://images.unsplash.com/photo-1521791136064-7985c2717883?auto=format&fit=crop&w=800&q=80"
     },
     {
       step: 4,
@@ -213,7 +216,8 @@ export default function TimelineApp({onOpenRegister}) {
         "Immutable agreement records"
       ],
       icon: <FileSignature />,
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80"
+        image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771354510/step4_cglrgb.png"
+     // image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80"
     },
     {
         step: 5,
@@ -225,7 +229,8 @@ export default function TimelineApp({onOpenRegister}) {
           "Payment proof generation"
         ],
         icon: <Lock />,
-        image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=800&q=80"
+        image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771354490/step5_q4vdk4.png"
+        //image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=800&q=80"
     },
     {
         step: 6,
@@ -237,7 +242,8 @@ export default function TimelineApp({onOpenRegister}) {
           "Instant fund transfer"
         ],
         icon: <CheckCircle />,
-        image: "https://images.unsplash.com/photo-1625246333195-5512a1d3c467?auto=format&fit=crop&w=800&q=80"
+        image:"https://res.cloudinary.com/dtbuqsryl/image/upload/v1771354450/step6_g2kgb3.png"
+       // image: "https://images.unsplash.com/photo-1625246333195-5512a1d3c467?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -311,7 +317,7 @@ export default function TimelineApp({onOpenRegister}) {
         </div>
         {/* Adjusted Font Size for 14-inch laptops (md:text-5xl) and large screens (lg:text-6xl) */}
         <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 tracking-tight">
-            How <span className="text-green-600">Agriassure</span> Works
+            How <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-teal-500">Agriassure</span> Works
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed px-2">
             From registration to secure payment release, we ensure every step of your agricultural trade is transparent, efficient, and secure.

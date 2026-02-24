@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FileText, Download, ShieldCheck } from "lucide-react";
 import api from "../../services/api";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 export default function ContractPage() {
   const [contracts, setContracts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useOutletContext();
+  const navigate = useNavigate();
   //const buyerId = user?.id;
 
   /* ---------------- FETCH BUYER CONTRACTS ---------------- */
@@ -124,13 +125,13 @@ export default function ContractPage() {
             <button
               className="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-gray-50"
               onClick={() =>
-                window.open(`/dashboard/buyer/contracts/${c._id}`)
+                navigate(`/dashboard/buyer/contracts/${c.proposalId}`)
               }
             >
               View Contract
             </button>
 
-            {c.pdf?.url && (
+            {/* {c.pdf?.url && (
               <a
                 href={`http://localhost:4000/${c.pdf.url}`}
                 target="_blank"
@@ -139,7 +140,18 @@ export default function ContractPage() {
               >
                 <Download size={23} /> Download PDF
               </a>
-            )}
+            )} */}
+
+            {c.pdf?.url && (
+  <a
+    href={c.pdf.url}
+    download={`contract-${c._id}.pdf`}
+    className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-bold flex items-center gap-2 hover:bg-emerald-700"
+  >
+    <Download size={23} />
+    Download Contract
+  </a>
+)}
           </div>
         </div>
       ))}

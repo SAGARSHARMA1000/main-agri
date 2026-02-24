@@ -382,15 +382,24 @@ export default function FarmerContracts() {
 
           {/* ACTIONS */}
           <div className="flex flex-wrap gap-3 pt-2">
-            <button
+            {/* <button
               className="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-gray-50"
               onClick={() =>
                 window.open(`/dashboard/buyer/contracts/${c._id}`)
               }
             >
               View Contract
-            </button>
-
+            </button> */}
+                 {/* <div className="flex justify-center mt-4"> */}
+               <button
+                 onClick={() =>
+                   navigate(`/dashboard/farmer/contracts/${c._id}`)
+                 }
+                className="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-gray-50"
+               >
+                 View Contract
+               </button>
+             {/* </div> */}
             {c.pdf?.url && (
               <a
                 href={`http://localhost:4000/${c.pdf.url}`}
@@ -401,18 +410,9 @@ export default function FarmerContracts() {
                 <Download size={23} /> Download PDF
               </a>
             )}
-            {c.status === "sent_to_farmer" && (
-             <div className="flex justify-center mt-4">
-               <button
-                 onClick={() =>
-                   navigate(`/dashboard/farmer/contracts/${c._id}`)
-                 }
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold"
-               >
-                 View Contract
-               </button>
-             </div>
-           )}
+            {/* {c.status === "sent_to_farmer" && ( */}
+       
+           {/* )} */}
           </div>
         </div>
       ))}
