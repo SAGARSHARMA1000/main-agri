@@ -667,7 +667,7 @@ const Navigation = ({
       </nav>
 
       {/* MOBILE MENU OVERLAY */}
-      <div
+      {/* <div
         className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 md:hidden ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -714,7 +714,116 @@ const Navigation = ({
             )}
           </div>
         </div>
-      </div>
+      </div> */}
+      {/* MOBILE MENU OVERLAY */}
+<div
+  className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 md:hidden ${
+    mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+  }`}
+>
+  <div className="pt-24 px-6 pb-10 flex flex-col h-full overflow-y-auto">
+
+    {/* NAVIGATION LINKS */}
+    <div className="space-y-4 text-lg font-semibold text-gray-800">
+      <button
+        onClick={() => navigate("/")}
+        className="w-full text-left py-3 border-b border-gray-100"
+      >
+        Home
+      </button>
+
+      <button
+        onClick={() => navigate("/market")}
+        className="w-full text-left py-3 border-b border-gray-100"
+      >
+        Marketplace
+      </button>
+
+      <button
+        onClick={() => navigate("/rates")}
+        className="w-full text-left py-3 border-b border-gray-100"
+      >
+        Mandi Rates
+      </button>
+
+      <button
+        onClick={() => navigate("/prices")}
+        className="w-full text-left py-3 border-b border-gray-100"
+      >
+        Contact Us
+      </button>
+    </div>
+
+    {/* AUTH SECTION */}
+    <div className="mt-8 pt-6 border-t border-gray-200 space-y-4">
+
+      {!user ? (
+        <>
+          {/* LOGIN */}
+          <button
+            onClick={onOpenLogin}
+            className="w-full py-3 rounded-xl border border-gray-300 font-semibold"
+          >
+            Log In
+          </button>
+
+          {/* DEMO SECTION */}
+          <div className="space-y-3">
+            <p className="text-sm text-gray-500 font-medium">
+              Try Demo Account
+            </p>
+
+            <button
+              onClick={() => onDemoLogin("farmer")}
+              className="w-full py-2 rounded-lg bg-emerald-50 text-emerald-700 font-medium"
+            >
+              Demo Farmer
+            </button>
+
+            <button
+              onClick={() => onDemoLogin("buyer")}
+              className="w-full py-2 rounded-lg bg-blue-50 text-blue-700 font-medium"
+            >
+              Demo Buyer
+            </button>
+
+            <button
+              onClick={() => onDemoLogin("admin")}
+              className="w-full py-2 rounded-lg bg-purple-50 text-purple-700 font-medium"
+            >
+              Demo Admin
+            </button>
+          </div>
+
+          {/* REGISTER */}
+          <button
+            onClick={onOpenRegister}
+            className="w-full py-3 rounded-xl bg-emerald-600 text-white font-bold shadow-md"
+          >
+            Get Started
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            onClick={() => navigate(`/dashboard/${user.role}`)}
+            className="w-full py-3 rounded-xl bg-emerald-600 text-white font-bold shadow-md"
+          >
+            Go to Dashboard
+          </button>
+
+          <button
+            onClick={onLogout}
+            className="w-full py-3 rounded-xl border border-red-200 text-red-500 font-semibold"
+          >
+            Logout
+          </button>
+        </>
+      )}
+    </div>
+
+  </div>
+</div>
     </>
   );
 };
