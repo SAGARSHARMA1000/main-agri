@@ -384,7 +384,7 @@ const handleSendToFarmer = async () => {
                   <tbody>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold w-1/3">Crop Variety</td>
-                      <td className="p-3">{contractData.cropDetails.name} ({contractData.cropDetails.variety})</td>
+                      <td className="p-3">{contractData.cropDetails?.name}</td>
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold">Quality Grade</td>
@@ -609,7 +609,7 @@ const handleSendToFarmer = async () => {
        )}
        {/* WAITING FOR FARMER */}
 {status === "sent_to_farmer" && (
-  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-green-50 p-4 rounded-xl shadow-lg border border-green-200 flex items-center justify-between">
+  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-green-50 p-4 rounded-lg shadow-lg border border-green-200 flex items-center justify-between">
     <div className="text-sm text-green-800">
       <p className="font-bold">Waiting for Farmer Response</p>
       <p>The contract has been sent and is awaiting farmer’s signature.</p>
@@ -626,7 +626,7 @@ const handleSendToFarmer = async () => {
 
 {/* ACTIVE (SIGNED BY BOTH) */}
 {status === "active" && (
-  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-emerald-50 p-4 rounded-xl shadow-lg border border-emerald-200 flex items-center justify-between">
+  <div className="sticky bottom-4 mx-auto max-w-4xl mt-6 bg-emerald-50 p-4 rounded-lg shadow-lg border border-emerald-200 flex items-center justify-between">
     <div className="text-sm text-emerald-800">
       <p className="font-bold">Contract Active</p>
       <p>This contract is legally binding and locked.</p>

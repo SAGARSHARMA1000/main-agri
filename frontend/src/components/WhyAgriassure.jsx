@@ -17,7 +17,7 @@ const WhyAgriassure = () => {
         {/* Background Video (Blurred) */}
         <div className="absolute inset-0 z-0 opacity-10">
            <video autoPlay loop muted className="w-full h-full object-cover filter blur-sm">
-             <source src="src\assets\video1.mp4" type="video/mp4" />
+             <source src="https://res.cloudinary.com/dtbuqsryl/video/upload/v1772042753/AgriAssure_Promotional_Video_Script_fyuwqr.mp4" type="video/mp4" />
            </video>
         </div>
 

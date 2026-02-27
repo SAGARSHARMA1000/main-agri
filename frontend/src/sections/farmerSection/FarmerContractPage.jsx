@@ -234,11 +234,12 @@ const handleReject = async () => {
                   <tbody>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold w-1/3">Crop Variety</td>
-                      <td className="p-3">{contractData.cropDetails.name} ({contractData.cropDetails.variety})</td>
+                      <td className="p-3">{contractData.cropDetails?.name}</td>
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold">Quality Grade</td>
-                      <td className="p-3">{contractData.cropDetails.grade}</td>
+                      {/* <td className="p-3">{contractData.cropDetails.grade}</td> */}
+                      <td className="p-3">Standard</td>
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="bg-gray-50 p-3 font-semibold">Quantity Agreed</td>
@@ -295,8 +296,8 @@ const handleReject = async () => {
                 <div>
                    <h4 className="font-bold text-sm mb-2">3.2 Payment Schedule</h4>
                    <ul className="list-disc list-inside text-sm space-y-2">
-                     {/* <li><span className="text-gray-500">Mode:</span> {contractData.payment.mode}</li> */}
-                     {/* <li><span className="text-gray-500">Advance:</span> {contractData.payment.advance}% upon signing</li> */}
+                     <li><span className="text-gray-500">Mode:</span> {contractData.payment?.mode}</li>
+                     <li><span className="text-gray-500">Advance:</span> {contractData.payment?.advance}% upon signing</li>
                      <li><span className="text-gray-500">Balance:</span>Within 24 hours of delivery</li>
                    </ul>
                 </div>
@@ -378,7 +379,7 @@ const handleReject = async () => {
           />
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder="Enter Your Name first"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="border-b text-center"

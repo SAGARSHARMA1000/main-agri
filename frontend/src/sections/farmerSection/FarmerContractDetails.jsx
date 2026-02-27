@@ -402,7 +402,8 @@ export default function FarmerContracts() {
              {/* </div> */}
             {c.pdf?.url && (
               <a
-                href={`http://localhost:4000/${c.pdf.url}`}
+                href={c.pdf.url}
+                download={`contract-${c._id}.pdf`}
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-bold flex items-center gap-2 hover:bg-emerald-700"

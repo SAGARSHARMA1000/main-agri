@@ -695,7 +695,7 @@ module.exports = async function generatePdf(contract) {
       "N/A";
 
     const location =
-      contract.delivery?.location || contract.location || "N/A";
+      contract.delivery?.location || contract.deliveryAddress || "N/A";
 
     const deliveryDate =
       contract.delivery?.deadline ||
@@ -754,7 +754,7 @@ module.exports = async function generatePdf(contract) {
 
     doc.fontSize(12)
       .text(
-        `This Contract Farming Agreement ("Agreement") is entered into on ${createdDate}, between:`
+        `This Contract Farming Agreement is entered into on ${createdDate}, between:`
       );
 
     doc.moveDown();
@@ -842,7 +842,7 @@ module.exports = async function generatePdf(contract) {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder: "agriassure/contracts",
-          resource_type: "raw",
+          resource_type: "auto",
           public_id: `contract-${contract._id}.pdf`,
           overwrite: true,
         },

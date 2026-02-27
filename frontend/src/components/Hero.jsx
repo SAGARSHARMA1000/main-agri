@@ -13,11 +13,12 @@ import {
   Sprout,
   Briefcase
 } from 'lucide-react';
-
+import video1 from "../assets/video1.mp4"; // or your path
 export default function Hero({onOpenRegister}) {
   const [scrolled, setScrolled] = useState(false);
   const [activeRole, setActiveRole] = useState('farmer'); // 'farmer' or 'buyer'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -92,10 +93,11 @@ export default function Hero({onOpenRegister}) {
               Start Farming Contract
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="w-full sm:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full font-bold text-base md:text-lg transition-all flex items-center justify-center gap-2">
+            <button onClick={() => setShowVideo(true)} className="w-full sm:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full font-bold text-base md:text-lg transition-all flex items-center justify-center gap-2">
               <Play size={20} className="fill-current" /> Watch Demo
             </button>
           </div>
+          
           
           {/* Trust Badges */}
           <div className="pt-8 md:pt-12 flex flex-wrap justify-center gap-4 md:gap-8 opacity-70 animate-fade-in-up delay-500 text-sm md:text-base">
@@ -185,9 +187,30 @@ export default function Hero({onOpenRegister}) {
           </div>
         </div>
       </section>
+       {showVideo && (
+  <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+    <div className="relative w-[90%] md:w-[70%] lg:w-[60%]">
 
+      {/* Close Button */}
+      <button
+        onClick={() => setShowVideo(false)}
+        className="absolute -top-10 right-0 text-white text-2xl"
+      >
+        ✕
+      </button>
+
+      <video
+        src={video1}
+        controls
+        autoPlay
+        className="w-full rounded-lg shadow-2xl"
+      />
+    </div>
+  </div>
+)}
       
 
     </div>
+    
   );
 }
