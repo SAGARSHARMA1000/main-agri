@@ -583,7 +583,7 @@ const handleSendToFarmer = async () => {
 
           
               <button
-  onClick={handleSendToFarmer}
+   onClick={handleSendToFarmer}
   disabled={isSending}
   className={`px-8 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2 transition-all
     ${isSending

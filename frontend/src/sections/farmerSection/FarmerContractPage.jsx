@@ -7,6 +7,7 @@ import {
   Download,
   Printer,
   CheckCircle,
+  Loader2,
   AlertTriangle
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -76,7 +77,7 @@ export default function FarmerContractView() {
   /* Farmer signature */
   const [signature, setSignature] = useState(null);
   const [name, setName] = useState("");
-
+  const [isSigning, setIsSigning] = useState(false);
   /* ---------------- FETCH CONTRACT ---------------- */
 
  
@@ -148,7 +149,7 @@ export default function FarmerContractView() {
     const formData = new FormData();
     formData.append("signature", signature);
     formData.append("name", name);
-
+    setIsSigning(true);
     await api.farmerSignContract(contractId, formData);
     alert("✅ Contract accepted & signed");
     setStatus("active");
@@ -403,12 +404,33 @@ const handleReject = async () => {
               Reject
             </button>
 
-            <button
+            {/* <button
               onClick={handleAccept}
               className="px-8 py-3 bg-emerald-600 text-white font-bold rounded"
             >
               <CheckCircle className="inline mr-2" /> Accept & Sign
-            </button>
+            </button> */}
+             <button
+  onClick={handleAccept}
+  disabled={isSigning}
+  className={`px-8 py-3 font-bold rounded flex items-center justify-center gap-2 transition-all
+    ${isSigning
+      ? "bg-emerald-400 cursor-not-allowed"
+      : "bg-emerald-600 hover:bg-emerald-700 text-white"}
+  `}
+>
+  {isSigning ? (
+    <>
+      <Loader2 className="animate-spin" size={20} />
+      Signing...
+    </>
+  ) : (
+    <>
+      <CheckCircle className="inline mr-2" />
+      Accept & Sign
+    </>
+  )}
+</button>
           </div>
         )}
       </div>

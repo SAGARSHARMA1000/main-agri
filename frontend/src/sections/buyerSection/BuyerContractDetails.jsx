@@ -146,6 +146,7 @@ export default function ContractPage() {
   <a
     href={c.pdf.url}
     download={`contract-${c._id}.pdf`}
+     target="_blank"
     className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-bold flex items-center gap-2 hover:bg-emerald-700"
   >
     <Download size={23} />

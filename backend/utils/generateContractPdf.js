@@ -843,8 +843,11 @@ module.exports = async function generatePdf(contract) {
         {
           folder: "agriassure/contracts",
           resource_type: "auto",
-          public_id: `contract-${contract._id}.pdf`,
+          public_id: `contract-${contract._id}`,
+          format: "pdf",
           overwrite: true,
+          type: "upload",   
+          access_mode: "public",
         },
         (error, result) => {
           if (error) reject(error);
