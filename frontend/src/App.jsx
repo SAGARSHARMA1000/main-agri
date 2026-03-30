@@ -9,10 +9,11 @@ import Marketplace from "./components/MarketPlace";
 import MandiRates from "./components/MandiRates";
 import WhyAgriassure from "./components/WhyAgriassure";
 import ProblemSolution from "./components/ProblemSolution";
+import ContactUsPage from "./components/layoutPages/ContactUsPage";
 
 import RegistrationModal from "./components/RegistrationModal";
-
 import LoginModal from "./components/LoginModal";
+
 import FarmerDashboard from "./pages/FarmerDashboard";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -145,7 +146,6 @@ const handleUpdateProposalStatus = async (proposalId, status) => {
 
 
 useEffect(() => {
-  console.log("🔄 Global proposals updated:", proposals);
 }, [proposals]);
 
 
@@ -199,6 +199,7 @@ useEffect(() => {
           />
 
            <Route path="/rates" element={<MandiRates />} />
+           <Route path="/contact" element={<ContactUsPage />} />
 
           {/* DASHBOARDS */}
          

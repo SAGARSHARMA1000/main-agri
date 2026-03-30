@@ -39,7 +39,7 @@ export default function Hero({onOpenRegister}) {
         "Timely Payments via Escrow",
         "Access to Verified Corporate Buyers"
       ],
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop",
+      image: "https://res.cloudinary.com/dtbuqsryl/image/upload/v1774884990/farmer_wooowq.png",
       cta: "Join as Farmer"
     },
     buyer: {
@@ -52,7 +52,7 @@ export default function Hero({onOpenRegister}) {
         "Digital Contract Management",
         "Hassle-free Bulk Procurement"
       ],
-      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000&auto=format&fit=crop",
+      image: "https://res.cloudinary.com/dtbuqsryl/image/upload/v1774884989/buyer_dawwxg.png",
       cta: "Join as Buyer"
     }
   };
@@ -65,7 +65,8 @@ export default function Hero({onOpenRegister}) {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2832&auto=format&fit=crop" 
+           src="https://res.cloudinary.com/dtbuqsryl/image/upload/v1774884987/agri-bg_yrpk8n.avif"
+           // src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2832&auto=format&fit=crop" 
             alt="Agriculture Field" 
             className="w-full h-full object-cover"
           />

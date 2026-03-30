@@ -559,7 +559,7 @@ const Navigation = ({
             <button onClick={() => navigate("/")}>Home</button>
             <button onClick={() => navigate("/market")}>Marketplace</button>
             <button onClick={() => navigate("/rates")}>Mandi Rates</button>
-            <button onClick={() => navigate("/prices")}>Contact us</button>
+            <button onClick={() => navigate("/contact")}>Contact us</button>
           </div>
 
           {/* DESKTOP ACTIONS */}
@@ -747,7 +747,7 @@ const Navigation = ({
       </button>
 
       <button
-        onClick={() => navigate("/prices")}
+        onClick={() => navigate("/contact")}
         className="w-full text-left py-3 border-b border-gray-100"
       >
         Contact Us
