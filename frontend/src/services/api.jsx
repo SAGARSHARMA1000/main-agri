@@ -9,7 +9,8 @@ import axios from "axios";
 
 const instance = axios.create({
  baseURL: API_BASE,
-  headers: { "Content-Type": "application/json" },
+  headers: { "Content-Type": "application/json",
+   },
   withCredentials: true,
 });
 
@@ -30,11 +31,11 @@ export default {
   register: (payload) => instance.post("/api/auth/register", payload),
   login: (payload) => instance.post("/api/auth/login", payload),
   // 🔐 PROTECTED ROUTES
-  // createListing: (payload) =>
-  //   instance.post("/api/listings", payload, {
-  //     headers: { "Content-Type": "multipart/form-data" }
-  //   }),
-  createListing: (payload) => instance.post("/api/listings", payload),
+  createListing: (payload) =>
+    instance.post("/api/listings", payload, {
+      headers: { "Content-Type": "multipart/form-data" }
+    }),
+  //createListing: (payload) => instance.post("/api/listings", payload),
   updateListing: (id, payload) => instance.put(`/api/listings/${id}`, payload),
   deleteListing: (id) => instance.delete(`/api/listings/${id}`),
   getFarmerListings: (farmerId) =>

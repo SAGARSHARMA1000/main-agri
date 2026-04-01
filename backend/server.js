@@ -15,7 +15,7 @@ const cron = require("node-cron");
 const autoConfirmDelivery = require("./cron/autoConfirmDelivery");
 
 // Runs every 30 minutes (recommended)
-cron.schedule("*/30 * * * *", async () => {
+cron.schedule("0 */30 * * * * ", async () => {
   console.log("⏰ Running auto-confirm delivery job");
   await autoConfirmDelivery();
 });
@@ -38,7 +38,7 @@ connectDB();
 
 app.use(cors({
   origin:"https://main-agri.vercel.app",
-  //origin:CLIENT_URL,
+ // origin:CLIENT_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]

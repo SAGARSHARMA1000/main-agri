@@ -49,7 +49,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegisteredDemo }) => {
     setError(null);
 
     const payload = { ...formData, role };
-    console.log("🚀 Frontend payload:", payload);
+    //console.log("🚀 Frontend payload:", payload);
 
 
     try {
@@ -98,8 +98,8 @@ const RegistrationModal = ({ isOpen, onClose, onRegisteredDemo }) => {
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center 
-      bg-linear-to-br from-green-900/40 via-green-700/30 to-yellow-400/30 
-      backdrop-blur-sm p-4">
+     backdrop-blur-sm
+       p-4">
 
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
 

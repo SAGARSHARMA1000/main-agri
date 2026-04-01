@@ -3,23 +3,133 @@ const User = require('../models/User');
 
 // exports.createListing = async (req, res) => {
 //   try {
+//     const {
+//       commodity,
+//       quantity,
+//       price,
+//       farmAddress,
+//       farmerId,
+//       farmerName,
+//       negotiationAllowed
+//     } = req.body;
+
+//     // ✅ basic validation
+//     if (!farmerId || !farmerName) {
+//       return res.status(400).json({
+//         message: "farmerId and farmerName are required",
+//       });
+//     }
+
 //     const listing = await Listing.create({
-//       commodity: req.body.commodity,
-//       quantity: req.body.quantity,
-//       price: req.body.price,
-//       location: req.body.location,
-//       farmerName: req.body.sellerName,
-//       farmerId:req.body.farmerId,
+//       commodity,
+//       quantity,
+//       price,
+//       farmAddress,
+//       farmerId,      // TEMP string (f1)
+//       farmerName,   // "Demo Farmer"
+//       negotiationAllowed
 //     });
 
 //     res.status(201).json({ listing });
 //   } catch (err) {
+//     console.error("Create listing error:", err);
 //     res.status(500).json({ message: "Listing creation failed" });
 //   }
 // };
 
+const cloudinary = require("../config/Cloudinary");
+
+// exports.createListing = async (req, res) => {
+//   try {
+//     const {
+//       commodity,
+//       quantity,
+//       price,
+//       farmAddress,
+//       farmerId,
+//       farmerName,
+//       negotiationAllowed,
+//       minPrice,
+//       maxPrice
+//     } = req.body;
+//      const isNegotiationAllowed = negotiationAllowed === "true" || negotiationAllowed === true;
+//     // ✅ validation
+//     if (!farmerId || !farmerName) {
+//       return res.status(400).json({
+//         message: "farmerId and farmerName are required",
+//       });
+//     }
+
+//        if (!commodity || !quantity || !price) {
+//       return res.status(400).json({
+//         message: "Required fields missing",
+//       });
+//     }
+
+//     if (negotiationAllowed) {
+//       if (!minPrice || !maxPrice) {
+//         return res.status(400).json({
+//           message: "Min and Max price required",
+//         });
+//       }
+
+//       if (Number(minPrice) > Number(maxPrice)) {
+//         return res.status(400).json({
+//           message: "Min price cannot be greater than max price",
+//         });
+//       }
+//     }
+//    // console.log("FILE:", req.file);
+//     // ================= IMAGE UPLOAD =================
+//     let imageUrl = "";
+//      if (req.file) {
+//   imageUrl = req.file.path;
+// }
+//     // if (req.file) {
+//     //   const result = await new Promise((resolve, reject) => {
+//     //     const stream = cloudinary.uploader.upload_stream(
+//     //       { folder: "agriassure/cropImages" },
+//     //       (error, result) => {
+//     //         if (error) reject(error);
+//     //         else resolve(result);
+//     //       }
+//     //     );
+
+//     //     stream.end(req.file.buffer);
+//     //   });
+
+//     //   imageUrl = result.secure_url;
+//     // }
+
+//     // ================= CREATE LISTING =================
+//     const listing = await Listing.create({
+//       commodity,
+//       quantity,
+//       price: Number(price),
+//       farmAddress,
+//       farmerId,
+//       farmerName,
+//       negotiationAllowed: isNegotiationAllowed,
+
+//       ...(negotiationAllowed && {
+//         minPrice: Number(minPrice),
+//         maxPrice: Number(maxPrice),
+//       }),
+
+//       image: imageUrl
+//     });
+
+//     res.status(201).json({ listing });
+
+//   } catch (err) {
+//     console.error("Create listing error:", err);
+//     res.status(500).json({ message: "Listing creation failed" });
+//   }
+// };
 exports.createListing = async (req, res) => {
   try {
+    const body = req.body || {};
+
     const {
       commodity,
       quantity,
@@ -27,27 +137,67 @@ exports.createListing = async (req, res) => {
       farmAddress,
       farmerId,
       farmerName,
-      negotiationAllowed
-    } = req.body;
+      negotiationAllowed,
+      minPrice,
+      maxPrice
+    } = body;
 
-    // ✅ basic validation
+    // ✅ CLEAN BOOLEAN PARSE (ONLY ONCE)
+    const isNegotiationAllowed = negotiationAllowed === "true" || negotiationAllowed === true;
+
+    // ✅ validation
     if (!farmerId || !farmerName) {
       return res.status(400).json({
         message: "farmerId and farmerName are required",
       });
     }
 
+    if (!commodity || !quantity || !price) {
+      return res.status(400).json({
+        message: "Required fields missing",
+      });
+    }
+
+    // ✅ only validate when TRUE
+    if (isNegotiationAllowed) {
+      if (!minPrice || !maxPrice) {
+        return res.status(400).json({
+          message: "Min and Max price required",
+        });
+      }
+
+      if (Number(minPrice) > Number(maxPrice)) {
+        return res.status(400).json({
+          message: "Min price cannot be greater than max price",
+        });
+      }
+    }
+
+    // ✅ IMAGE (already cloudinary)
+    let imageUrl = "";
+    if (req.file) {
+      imageUrl = req.file.path;
+    }
+
     const listing = await Listing.create({
       commodity,
       quantity,
-      price,
+      price: Number(price),
       farmAddress,
-      farmerId,      // TEMP string (f1)
-      farmerName,   // "Demo Farmer"
-      negotiationAllowed
+      farmerId,
+      farmerName,
+      negotiationAllowed: isNegotiationAllowed,
+
+      ...(isNegotiationAllowed && {
+        minPrice: Number(minPrice),
+        maxPrice: Number(maxPrice),
+      }),
+
+      image: imageUrl
     });
 
     res.status(201).json({ listing });
+
   } catch (err) {
     console.error("Create listing error:", err);
     res.status(500).json({ message: "Listing creation failed" });
@@ -56,8 +206,8 @@ exports.createListing = async (req, res) => {
 
 exports.getFarmerListings = async (req, res) => {
   try {
-    console.log("[Controller] getFarmerListings called");
-    console.log("[Controller] req.query:", req.query);
+   // console.log("[Controller] getFarmerListings called");
+   // console.log("[Controller] req.query:", req.query);
 
     const { farmerId } = req.query;
 
@@ -67,7 +217,7 @@ exports.getFarmerListings = async (req, res) => {
         message: "farmerId is required"
       });
     }
-     console.log("[Controller] querying DB with farmerId:", farmerId);
+   //  console.log("[Controller] querying DB with farmerId:", farmerId);
     const listings = await Listing.find({ farmerId })
       .sort({ createdAt: -1 });
     console.log("[Controller] listings found:", listings.length);
@@ -99,7 +249,7 @@ exports.getFarmerListings = async (req, res) => {
 // };
 exports.getAllListings = async (req, res) => {
   try {
-    console.log("🌍 [Marketplace] Fetching all listings");
+   // console.log("🌍 [Marketplace] Fetching all listings");
 
     const listings = await Listing.find({
       status: "active"   // only show active listings

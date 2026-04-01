@@ -11,7 +11,7 @@ const signToken = (user) =>
 
 // REGISTER
 exports.register = async (req, res, next) => {
-     console.log("📩 REGISTRATION REQUEST BODY:", req.body); 
+     //console.log("📩 REGISTRATION REQUEST BODY:", req.body); 
   try {
     const { name, phone, password, role, location, businessName, cropSpecialty } = req.body;
 
@@ -30,7 +30,7 @@ exports.register = async (req, res, next) => {
     const user = await User.create({
       name,
       phone,
-      role: role || "farmer",
+      role: role,
       location,
       businessName,
       cropSpecialty,
@@ -61,7 +61,7 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const { phone, password } = req.body;
-      console.log("📩 login REQUEST BODY:", req.body); 
+     // console.log("📩 login REQUEST BODY:", req.body); 
 
     if (!phone || !password)
       return res.status(400).json({ message: "Phone & password required" });

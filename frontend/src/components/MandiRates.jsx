@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect,useState, useMemo } from 'react';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -85,7 +85,17 @@ const MandiRates = () => {
   // Extract Unique Filter Options based on Data
   const uniqueCrops = useMemo(() => [...new Set(MANDI_RATES.map(item => item.crop))], []);
   const uniqueStates = useMemo(() => [...new Set(MANDI_RATES.map(item => item.state))], []);
-  
+  //for time
+   const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // District depends on Selected State
   const availableDistricts = useMemo(() => {
     if (!selectedState) return [...new Set(MANDI_RATES.map(item => item.district))];
@@ -157,7 +167,7 @@ const MandiRates = () => {
         </div>
         <div className="flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-semibold">
           <span className="animate-pulse w-2 h-2 bg-emerald-500 rounded-full"></span>
-          Live Updates: 9:00 AM
+          Live Updates: {time.toLocaleString()}
         </div>
       </div>
     </div>

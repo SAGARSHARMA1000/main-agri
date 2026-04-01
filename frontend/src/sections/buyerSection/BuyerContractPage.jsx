@@ -119,10 +119,10 @@ export default function BuyerContracts() {
 
     const fetchContract = async () => {
       try {
-        console.log("📡 Fetching contract for proposalId:", proposalId);
+      //  console.log("📡 Fetching contract for proposalId:", proposalId);
         const res = await api.getContractByProposal(proposalId);
 
-        console.log("✅ RAW API RESPONSE:", res.data);
+       // console.log("✅ RAW API RESPONSE:", res.data);
         //console.log("📦 contractData from API:", res.data.contractData);
         //console.log("📦 contract from API (flat):", res.data);
    setContractId(res.data._id);
@@ -159,7 +159,7 @@ export default function BuyerContracts() {
     }
   };
 
-  console.log("🧩 MERGED contractData (FINAL):", merged);
+ // console.log("🧩 MERGED contractData (FINAL):", merged);
   return merged;
 });
 
@@ -192,7 +192,7 @@ setStatus(res.data.status || "draft");
 
     fetchContract();
   }, [proposalId]);
-  console.log("🖥️ RENDERING contractData:", contractData);
+ // console.log("🖥️ RENDERING contractData:", contractData);
 
   /* ---------------- SAFETY ---------------- */
   // if (!contractData) {

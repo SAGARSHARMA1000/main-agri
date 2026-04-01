@@ -15,7 +15,7 @@ const listingSchema = new mongoose.Schema(
 
     quantity: {
       type: String,
-      required: true // e.g. "50 Quintal"
+      required: true 
     },
 
     price: {
@@ -42,16 +42,18 @@ const listingSchema = new mongoose.Schema(
 
     // ✅ For UI display only
      farmerId: { type: String, required:true },
-     farmerName: {type: String},
+     farmerName: {type: String, required:true},
 
     // 🔮 Optional future fields
     negotiationAllowed: {
       type: Boolean,
-      default: true
+      default: false
     },
+    minPrice: { type: Number },
+    maxPrice: { type: Number },
 
     image: {
-      type: String // store image URL later (Cloudinary)
+      type: String 
     },
 
     status: {
@@ -60,7 +62,7 @@ const listingSchema = new mongoose.Schema(
       default: "active"
     }
   },
-  { timestamps: true } // adds createdAt & updatedAt
+  { timestamps: true } 
 );
 
 module.exports = mongoose.model("Listing", listingSchema);

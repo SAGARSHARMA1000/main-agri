@@ -285,7 +285,7 @@ return (
               {/* 🌾 IMAGE SECTION */}
               <div className="relative h-40 w-full overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1500382017468-9049fed747ef"
+                  src={item.image||"https://images.unsplash.com/photo-1500382017468-9049fed747ef"}
                   alt="crop"
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />

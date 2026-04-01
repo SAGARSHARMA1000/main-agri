@@ -35,7 +35,7 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
       });
 
       const { user, token } = resp.data || {};
-      console.log("✅ Login success user from backend:", user);
+     // console.log("✅ Login success user from backend:", user);
 
       if (!user || user.role !== role) {
         setError("Role mismatch. Please select correct role.");
@@ -68,10 +68,10 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center bg-cover bg-center backdrop-blur-sm p-4"
-    style={{
-    backgroundImage:
-      "url('https://res.cloudinary.com/dtbuqsryl/image/upload/v1771403701/Gemini_Generated_Image_ltuieeltuieeltui_bnu3ct.png')",
-  }}
+  //   style={{
+  //   backgroundImage:
+  //     "url('https://res.cloudinary.com/dtbuqsryl/image/upload/v1771403701/Gemini_Generated_Image_ltuieeltuieeltui_bnu3ct.png')",
+  // }}
     >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
         
